@@ -66,10 +66,10 @@ export const userLogin = catchAsync(async (req, res, next) => {
         return next(new AppError("Email is required", 404));
     }
 
-    const accesesdUser = await User.findOne({ email });
+    const accesesdUser = await User.findOne({ email:email });
 
     if (!accesesdUser) {
-        return res.status(403).json({ message: "You Dont have a access to Login" });
+        return res.status(403).json({ message: "You don't have a access to Login" });
     }
 
     const otpCode = Math.floor(1000 + Math.random() * 9000);
@@ -80,6 +80,7 @@ export const userLogin = catchAsync(async (req, res, next) => {
         { otp: hashedOTP, createdAt: Date.now() },
         { upsert: true }
     );
+console.log(process.env.SMTP_USER,"process.env.SMTP_USER");
 
     await sendMail({
         from: process.env.SMTP_USER,
