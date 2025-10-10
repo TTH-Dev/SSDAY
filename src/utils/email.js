@@ -4,8 +4,8 @@ import nodemailer from 'nodemailer';
 // Map sender emails to their SMTP credentials
 const senders = {
   'omaraws911@gmail.com': {
-    user: process.env.SMTP_USER1,
-    pass: process.env.SMTP_PASS1,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
   'monusan2590@gmail.com': {
     user: process.env.SMTP_USER2,
@@ -15,6 +15,7 @@ const senders = {
 
 
  const sendEmail = async ({ from, to, subject, text }) => {
+
   if (!senders[from]) {
     throw new Error(`SMTP configuration not found for sender: ${from}`);
   }
