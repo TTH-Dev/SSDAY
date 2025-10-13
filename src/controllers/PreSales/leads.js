@@ -247,7 +247,7 @@ export const updateLeads = catchAsync(async (req, res, next) => {
       scheduleTime: req.body.scheduleTime,
     };
 
-    if (req.files?.siteImage) {
+    if (req.files.siteImage) {
       siteDetails.siteImage = req.files.siteImage[0].filename;
     }
 
