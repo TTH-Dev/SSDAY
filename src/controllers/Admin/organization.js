@@ -7,7 +7,7 @@ import Admin from "../../models/Admin/admin.js";
 export const createOrganization = catchAsync(async (req, res, next) => {
     
     if (req.files) {
-        if (req.files.organizationLogo) {
+        if (req.files.organizationLogo){
             req.body.organizationLogo = req.files.organizationLogo[0].filename;
         }
         if (req.files.signatureDocument) {
