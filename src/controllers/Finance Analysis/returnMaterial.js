@@ -14,7 +14,7 @@ export const createReturnMaterial = catchAsync(async (req, res, next) => {
 
     for (const group of productTable) {
         for (const item of group.products) {
-            if (item?.productId && item?.goodQuntity) {
+            if (item.productId && item.goodQuntity) {
                 await Product.findByIdAndUpdate(item.productId, {
                     $inc: { stock: item.goodQuntity },
                 });
