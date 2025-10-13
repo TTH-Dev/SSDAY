@@ -1282,13 +1282,13 @@ export const updateQuotationStatus = catchAsync(async (req, res, next) => {
     await quationDoc.save();
 
     // Check if any other quotations are approved
-    const approvedQuatations = lead.quatation.filter(q => q.status?.toLowerCase() === "approved");
+    const approvedQuatations = lead.quatation.filter(q => q.status.toLowerCase() === "approved");
 
     if (approvedQuatations.length > 0) {
       // Pick the first approved quotation's total for balanceAmount
       const approvedQuatationDoc = await Quation.findById(approvedQuatations[0].quatationId);
-      lead.balanceAmount = approvedQuatationDoc?.total;
-       lead.finalizedTotalAmt = approvedQuatationDoc?.total;
+      lead.balanceAmount = approvedQuatationDoc.total;
+       lead.finalizedTotalAmt = approvedQuatationDoc.total;
     } else {
       // No more approved quotations, set balanceAmount to 0
       lead.balanceAmount = 0;
@@ -1548,7 +1548,7 @@ export const updateChallanById = catchAsync(async (req, res) => {
 
 export const scheduleCreate = catchAsync(async (req, res) => {
   if (req.files) {
-    if (req.files?.deliveryChallan) {
+    if (req.files.deliveryChallan) {
       req.body.deliveryChallan = req.files?.deliveryChallan[0].filename;
     }
   }
