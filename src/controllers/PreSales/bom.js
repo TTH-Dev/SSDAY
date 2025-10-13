@@ -132,7 +132,7 @@ export const getBOMById1 = catchAsync(async (req, res, next) => {
     const response = {
         siteName: bom.siteName || "",
         qcKw: bom.qcKw || "",
-        leadId: bom.lead?._id || null,
+        leadId: bom.lead._id || null,
         productTable: bom.productTable || [],
         subTotal: bom.subTotal || 0,
         total: bom.total || 0,
