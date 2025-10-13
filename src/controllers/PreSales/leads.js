@@ -1211,15 +1211,15 @@ export const homeData = catchAsync(async (req, res) => {
 
   const counts = {
     totalLeads: data.length,
-    leadsWithQuotation: data.filter((lead) => lead.quatation?.length > 0)
+    leadsWithQuotation: data.filter((lead) => lead.quatation.length > 0)
       .length,
     leadsWithSiteVisitDetails: data.filter(
       (lead) =>
-        lead.siteVisitDetails?.typeOfSolution || lead.siteVisitDetails?.roofType
+        lead.siteVisitDetails.typeOfSolution || lead.siteVisitDetails.roofType
     ).length,
-    leadwithQualified: data.filter((lead) => lead?.status === "qualified")
+    leadwithQualified: data.filter((lead) => lead.status === "qualified")
       .length,
-    leadwithLost: data.filter((lead) => lead?.status === "lost-leads").length,
+    leadwithLost: data.filter((lead) => lead.status === "lost-leads").length,
   };
 
   res.status(200).json({
@@ -1252,7 +1252,7 @@ export const updateQuotationStatus = catchAsync(async (req, res, next) => {
   // If status is approved, set other approved to pending/rejected
   if (status.toLowerCase() === "approved") {
     for (const q of lead.quatation) {
-      if (q.quatationId.toString() !== quotationId && q.status?.toLowerCase() === "approved") {
+      if (q.quatationId.toString() !== quotationId && q.status.toLowerCase() === "approved") {
         q.status = "pending";
         q.addedDate = new Date();
 
