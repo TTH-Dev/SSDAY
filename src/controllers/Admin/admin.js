@@ -178,11 +178,12 @@ export const updateAdmin = catchAsync(async (req, res, next) => {
   const {id } = req.params;
 
 
-  if (req.files) {
-    if (req.files.profileImage) {
-      req.body.profileImage = req.files?.profileImage[0].filename;
-    }
-  }
+
+
+  if (req.files && req.files.profileImage && req.files.profileImage[0]) {
+  req.body.profileImage = req.files.profileImage[0].filename;
+}
+
 
   let admin;
 
