@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 
 // Map sender emails to their SMTP credentials
 const senders = {
-  'omaraws911@gmail.com': {
+  'daystarsolarcompany@gmail.com': {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
