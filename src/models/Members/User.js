@@ -28,21 +28,7 @@ const userSchema = new mongoose.Schema({
   },
   accessModuels: {
     type: [String],
-    enum: [
-      "leads",
-      "pipeline",
-      "pre-Sales",
-      "purchase",
-      "procurement",
-      "store",
-      "products",
-      "project",
-      "financeAnalysis",
-      "customer",
-      "vendor",
-      "team",
-      "designing"
-    ]
+
   },
   role: {
     type: String,
